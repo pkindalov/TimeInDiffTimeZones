@@ -64,7 +64,8 @@ namespace TimeInDiffTimeZones
             }
             catch (Exception e)
             {
-                txtResult.Text = e.Message;
+                lblStatus.ForeColor = System.Drawing.Color.Red;
+                lblStatus.Text = e.Message;
             }
            
         }
@@ -74,10 +75,13 @@ namespace TimeInDiffTimeZones
             try
             {
                 Clipboard.SetText(txtResult.Text);
+                lblStatus.ForeColor = System.Drawing.Color.Green;
                 lblStatus.Text = "Text copied successfully.";
+
             }
             catch (Exception ex)
             {
+                lblStatus.ForeColor = System.Drawing.Color.Red;
                 lblStatus.Text = ex.Message;
             }
            
@@ -91,6 +95,7 @@ namespace TimeInDiffTimeZones
         private void txtResult_Click(object sender, EventArgs e)
         {
             lblStatus.Text = " ";
+            txtResult.Text = null;
         }
 
         private void cmbZones_Click(object sender, EventArgs e)
